@@ -1,6 +1,7 @@
 'use client'
 import { GymContext } from '@/context/GymContext';
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 
 const TodayButton = ({gym}) => {
 
@@ -9,6 +10,7 @@ const TodayButton = ({gym}) => {
 
     const handleAddTodaysPlan = () =>{
         console.log('btn triggered', gym);
+        toast.success("Todays plan is ready!");
         setTodaysPlan([...todaysPlan, gym])
     }
     return (

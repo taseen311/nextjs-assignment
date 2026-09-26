@@ -1,6 +1,7 @@
 'use client'
 import { GymContext } from '@/context/GymContext';
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 
 const SavedButton = ({gym}) => {
 
@@ -9,6 +10,7 @@ const SavedButton = ({gym}) => {
 
     const handleSavedForLater = () =>{
         console.log('btn triggered', gym);
+        toast.success("Added to Saved later");
         setSavedForLater([...savedForLater, gym])
     }
     return (
