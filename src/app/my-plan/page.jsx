@@ -8,10 +8,13 @@ const ListedGyms = () => {
   const { todaysPlan, savedForLater } = useContext(GymContext);
   console.log(todaysPlan, savedForLater);
   return (
-    <div>
-      here is MY PLAn I HAVE a PLAN
-      <h2>Todays plan: {todaysPlan.length}</h2>
-      <h2>Saved for later plan: {savedForLater.length}</h2>
+    <div className="container mx-auto">
+       <div className="my-10 mx-10">
+        <h2 className="text-3xl font-bold">MY PLAN</h2>
+        <p className="font-bold">Cap of five lifts for today. Finish them, then load more.</p>
+        </div>  
+      {/* <h2>Todays plan: {todaysPlan.length}</h2>
+      <h2>Saved for later plan: {savedForLater.length}</h2> */}
       {/* name of each tab group should be unique */}
       <div className="tabs tabs-border">
         <input
