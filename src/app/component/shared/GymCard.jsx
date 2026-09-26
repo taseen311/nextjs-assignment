@@ -5,7 +5,7 @@ import React from "react";
 const GymCard = ({ workout }) => {
   return (
     <Link
-      href={`/workout/${workout.id}`}
+      href={`/workouts/${workout.id}`}
       className="group block overflow-hidden rounded-2xl border border-white/10 bg-[#111418] transition duration-300 hover:-translate-y-1 hover:border-[#ccff00]/40"
     >
       {/* Image */}
@@ -36,7 +36,7 @@ const GymCard = ({ workout }) => {
           {workout.name}
         </h3>
 
-        <p className="mt-2 text-sm text-gray-500">{workout.equipment}</p>
+        <p className="mt-2 bg-green-600 text-sm font-bold w-fit p-2 rounded-2xl text-white">{workout.equipment}</p>
 
         {/* Stats */}
         <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
@@ -54,7 +54,7 @@ const GymCard = ({ workout }) => {
               Calories
             </p>
             <p className="mt-1 text-sm font-bold text-white">
-              {workout.calories}
+              {workout.caloriesBurned}
             </p>
           </div>
 
