@@ -2,6 +2,7 @@
 import { GymContext } from "@/context/GymContext";
 import React, { useContext } from "react";
 import GymCard from "../component/shared/GymCard";
+import MyListedPlan from "../component/shared/MyListedPlan";
 
 const ListedGyms = () => {
   const { todaysPlan, savedForLater } = useContext(GymContext);
@@ -17,13 +18,13 @@ const ListedGyms = () => {
           type="radio"
           name="my_tabs_2"
           className="tab"
-          aria-label="Todays Plan"
+          aria-label={`Todays Plan(${todaysPlan.length})`}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
           {
             todaysPlan.length>0? (
                 todaysPlan.map(gym =>{
-                return <GymCard key={gym.id} workout={gym}></GymCard>
+                return    <MyListedPlan key={gym.id} workout={gym}></MyListedPlan>
                 }
                 )
             )
@@ -36,14 +37,14 @@ const ListedGyms = () => {
           type="radio"
           name="my_tabs_2"
           className="tab"
-          aria-label="Saved for later"
+          aria-label={`Saved for later (${savedForLater.length})`}
           defaultChecked
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
           {
             savedForLater.length>0? (
                 savedForLater.map(gym =>{
-                return <GymCard key={gym.id} workout={gym}></GymCard>
+                return <MyListedPlan key={gym.id} workout={gym}></MyListedPlan>
                 }
                 )
             )
