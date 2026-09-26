@@ -1,3 +1,5 @@
+import SavedButton from "@/app/component/shared/bookDetails/SavedButton";
+import TodayButton from "@/app/component/shared/bookDetails/TodayButton";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -164,13 +166,9 @@ return (
 
           {/* Buttons */}
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <button className="flex-1 rounded-full bg-[#ccff00] px-6 py-4 text-sm font-black uppercase tracking-wide text-black transition hover:bg-[#bfff00]">
-              + Add to Today&apos;s Plan
-            </button>
+            <TodayButton gym={gym}/>
 
-            <button className="flex-1 rounded-full border border-white/20 px-6 py-4 text-sm font-bold uppercase tracking-wide text-white transition hover:border-[#ccff00] hover:text-[#ccff00]">
-              ♡ Save for Later
-            </button>
+            <SavedButton gym={gym}/>
           </div>
         </div>
       </div>

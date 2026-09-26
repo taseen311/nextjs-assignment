@@ -1,6 +1,9 @@
-import React from 'react';
+'use client'
+import { GymContext } from '@/context/GymContext';
+import React, { useContext } from 'react';
 
-const page = () => {
+const ListedGyms = () => {
+    const {todaysPlan} = useContext(GymContext)
     return (
         <div>
             here is MY PLAn I HAVE a PLAN
@@ -8,4 +11,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default ListedGyms;
