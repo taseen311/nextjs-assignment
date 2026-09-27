@@ -3,7 +3,7 @@ import GymCard from '../GymCard';
 
 const getGyms = async() =>{
     const response = await fetch("https://api.abcz.workers.dev/api/fitlog");
-    const data = response.json();
+    const data = await response.json();
     return data;
 }
 

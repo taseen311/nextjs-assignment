@@ -16,10 +16,10 @@ const GymProvider = ({children}) => {
     };
 
     return (
-        <div>
+        
             <GymContext.Provider value={sharedData}>{children}
             </GymContext.Provider>        
-        </div>
+        
     );
 };
 

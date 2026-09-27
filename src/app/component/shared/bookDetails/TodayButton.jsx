@@ -9,6 +9,19 @@ const TodayButton = ({gym}) => {
     // console.log(gymProvider, 'gym provider')
 
     const handleAddTodaysPlan = () =>{
+
+        const alreadyAdded = todaysPlan.find(item=> item.id === gym.id)
+        
+        if(alreadyAdded){
+            toast.info("Already added to todays plan")
+            return
+        }
+
+        if(todaysPlan.length >= 5){
+            toast.warning("You can add maximum 5 workouts")
+            return;
+        }
+
         console.log('btn triggered', gym);
         toast.success("Todays plan is ready!");
         setTodaysPlan([...todaysPlan, gym])

@@ -9,6 +9,21 @@ const SavedButton = ({gym}) => {
     // console.log(gymProvider, 'gym provider')
 
     const handleSavedForLater = () =>{
+
+        const alreadySaved = savedForLater.find(item => item.id === gym.id);
+
+        if(alreadySaved){
+            toast.info("Already saved for later");
+            return;
+        }
+
+        if(savedForLater.length >= 5){
+            toast.warning("You can save maximum 5 workouts");
+            return;
+        }
+
+        
+
         console.log('btn triggered', gym);
         toast.success("Added to Saved later");
         setSavedForLater([...savedForLater, gym])
