@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import GymCard from '../component/shared/GymCard';
 
 const getGyms = async() =>{
@@ -13,13 +13,15 @@ const Gyms = async() => {
     return (
         <div>
             <h2>Here is all the workouts</h2>
-            <div className='grid grid-cols-3 gap-10'>
+            <Suspense fallback={<p>Loading Data....</p>}>
+                <div className='grid grid-cols-3 gap-10'>
                 {
                     gymsData.map(workout=>{
                         return <GymCard key={workout.id} workout={workout}/>
                     })
                 }
             </div>
+            </Suspense>
         </div>
     );
 };

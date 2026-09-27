@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import logo from '@/assets/logo.png'
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -13,7 +15,7 @@ const Footer = () => {
         >
           {/* Logo */}
           <span className="text-2xl font-black italic text-[#ccff00]">
-            F
+            <Image src={logo} height={20} width={20} alt="logo"/>
           </span>
 
           {/* Brand Name */}

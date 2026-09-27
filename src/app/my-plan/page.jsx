@@ -11,10 +11,37 @@ const ListedGyms = () => {
   console.log(todaysPlan, savedForLater);
 
   const [activeTab, setActiveTab] = useState("today");
+  const [sortBy, setSortBy] = useState("");
 
-  const activePlan = activeTab === "today"? todaysPlan : savedForLater;
+  const activePlan = activeTab === "today" ? todaysPlan : savedForLater;
 
-
+  const sortedPlan = (plans) => {
+    return [...plans].sort((a,b) =>{
+  if (sortBy === "calories") {
+      return parseInt(b.caloriesBurned) - parseInt(a.caloriesBurned);
+    }
+    if (sortBy === "duration") {
+      return parseInt(b.duration) - parseInt(a.duration);
+    }
+    if (sortBy === "rating") {
+      return b.rating - a.rating;
+    }
+    return 0;
+    }
+    )
+  };
+  // const sortedPlan = [...activePlan].sort((a, b) => {
+  //   if (sortBy === "calories") {
+  //     return parseInt(b.caloriesBurned) - parseInt(a.caloriesBurned);
+  //   }
+  //   if (sortBy === "duration") {
+  //     return parseInt(b.duration) - parseInt(a.duration);
+  //   }
+  //   if (sortBy === "rating") {
+  //     return b.rating - a.rating;
+  //   }
+  //   return 0;
+  // });
 
   const totalExercises = activePlan.length;
 
@@ -45,6 +72,20 @@ const ListedGyms = () => {
         <p className="font-bold">
           Cap of five lifts for today. Finish them, then load more.
         </p>
+
+        {/* dropDOwn */}
+        <div className="mt-6 flex justify-end">
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="rounded-lg border border-white/10 bg-[#111418] px-4 py-3 text-sm font-bold text-white outline-none"
+          >
+            <option value="">Sort By</option>
+            <option value="calories">Calories</option>
+            <option value="duration">Duration</option>
+            <option value="rating">Rating</option>
+          </select>
+        </div>
 
         {/* Metrics */}
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -91,12 +132,12 @@ const ListedGyms = () => {
           name="my_tabs_2"
           className="tab"
           aria-label={`Todays Plan(${todaysPlan.length})`}
-          checked = {activeTab === "today"}
-          onChange={()=>setActiveTab("today")}
+          checked={activeTab === "today"}
+          onChange={() => setActiveTab("today")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
           {todaysPlan.length > 0 ? (
-            todaysPlan.map((gym) => {
+            sortedPlan(todaysPlan).map((gym) => {
               return (
                 <MyListedPlan
                   key={gym.id}
@@ -116,12 +157,12 @@ const ListedGyms = () => {
           className="tab"
           aria-label={`Saved for later (${savedForLater.length})`}
           // defaultChecked
-          checked={activeTab==='saved'}
-          onChange={()=>setActiveTab("saved")}
+          checked={activeTab === "saved"}
+          onChange={() => setActiveTab("saved")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
           {savedForLater.length > 0 ? (
-            savedForLater.map((gym) => {
+            sortedPlan(savedForLater).map((gym) => {
               return (
                 <MyListedPlan
                   key={gym.id}

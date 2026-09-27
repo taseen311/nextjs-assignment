@@ -14,7 +14,7 @@ const Gyms = async() => {
         <div className='container mx-auto my-20'>
             <h2 className='text-3xl font-bold mb-2'>THE LIBRARY</h2>
             <p className='mb-10 font-bold'>Twelve lifts covering every major muscle group.</p>
-            <div className='grid grid-cols-3 gap-10'>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
                 {
                     gymsData.map(workout=>{
                         return <GymCard key={workout.id} workout={workout}/>
